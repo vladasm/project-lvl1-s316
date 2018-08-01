@@ -18,7 +18,9 @@
     "dist"
   ],
   "keywords": [
-    "hexlet, brain-games, learning"
+    "hexlet", 
+    "brain-games", 
+    "learning"
   ],
   "dependencies": {
     "readline-sync": "^1.4.9"
