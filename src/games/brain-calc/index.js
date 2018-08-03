@@ -1,14 +1,10 @@
 import readlineSync from 'readline-sync';
 
-console.log('Welcome to the Brain Games!');
-console.log('What is the result of the expression?');
-
 const getName = () => {
   const name = readlineSync.question('May I have your name?: ');
   console.log(`Hello, ${name}!`);
   return name;
 };
-
 
 const getRandomNumber = n => Math.floor(Math.random() * n);
 
@@ -40,6 +36,8 @@ Let's try again, ${name}!`);
 };
 
 const main = () => {
+  console.log('Welcome to the Brain Games!');
+  console.log('What is the result of the expression?');
   const name = getName();
   let rightAnswerCount = 0;
   const roundCount = 3;
