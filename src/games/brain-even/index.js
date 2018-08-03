@@ -1,26 +1,24 @@
 import readlineSync from 'readline-sync';
 
-console.log('Welcome to the Brain Games!');
-console.log('Answer "yes" if number even otherwise answer "no".');
-
 const getName = () => {
   const name = readlineSync.question('May I have your name?: ');
   console.log(`Hello, ${name}!`);
   return name;
 };
 
-
 const getRandomNumber = () => Math.floor(Math.random() * 100);
 
-const getRightAnswer = number => (number % 2 === 0 ? 'yes' : 'no');
+const isEven = number => (number % 2 === 0);
+
+const getRightAnswer = number => (isEven(number) ? 'yes' : 'no');
 
 const playRound = (name) => {
-  const number = getRandomNumber();
+  const question = getRandomNumber();
 
-  console.log(`Question: ${number}`);
+  console.log(`Question: ${question}`);
   const answer = readlineSync.question('Your answer: ');
 
-  const rightAnswer = getRightAnswer(number);
+  const rightAnswer = getRightAnswer(question);
 
   if (answer === rightAnswer) {
     console.log('Correct!');
@@ -31,13 +29,15 @@ Let's try again, ${name}!`);
   return false;
 };
 
+const roundsCount = 3;
 const main = () => {
+  console.log('Welcome to the Brain Games!');
+  console.log('Answer "yes" if number even otherwise answer "no".');
   const name = getName();
   let rightAnswerCount = 0;
-  const numberCount = 3;
 
-  while (rightAnswerCount < numberCount && playRound(name)) { rightAnswerCount += 1; }
-  if (rightAnswerCount === numberCount) { console.log(`Congratulations, ${name}!`); }
+  while (rightAnswerCount < roundsCount && playRound(name)) { rightAnswerCount += 1; }
+  if (rightAnswerCount === roundsCount) { console.log(`Congratulations, ${name}!`); }
 };
 
 export default main;
