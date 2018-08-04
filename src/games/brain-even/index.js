@@ -12,7 +12,7 @@ const isEven = number => (number % 2 === 0);
 
 const getRightAnswer = number => (isEven(number) ? 'yes' : 'no');
 
-const playRound = (name) => {
+const playRound = () => {
   const question = getRandomNumber();
 
   console.log(`Question: ${question}`);
@@ -24,20 +24,24 @@ const playRound = (name) => {
     console.log('Correct!');
     return true;
   }
-  console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'. 
-Let's try again, ${name}!`);
+  console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
   return false;
 };
 
-const roundsCount = 3;
+const roundCount = 3;
 const main = () => {
   console.log('Welcome to the Brain Games!');
   console.log('Answer "yes" if number even otherwise answer "no".');
   const name = getName();
   let rightAnswerCount = 0;
 
-  while (rightAnswerCount < roundsCount && playRound(name)) { rightAnswerCount += 1; }
-  if (rightAnswerCount === roundsCount) { console.log(`Congratulations, ${name}!`); }
+  for (rightAnswerCount = 0; rightAnswerCount < roundCount; rightAnswerCount += 1) {
+    if (!playRound()) {
+      console.log(`Let's try again, ${name}!`);
+      break;
+    }
+  }
+  if (rightAnswerCount === roundCount) { console.log(`Congratulations, ${name}!`); }
 };
 
 export default main;
