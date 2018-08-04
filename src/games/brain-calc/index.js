@@ -16,7 +16,7 @@ const getRightAnswer = (number1, number2, operation) => {
   return result;
 };
 
-const playRound = (name) => {
+const playRound = () => {
   const number1 = getRandomNumber(100);
   const number2 = getRandomNumber(100);
   const operation = ['+', '-', '*'][getRandomNumber(3)];
@@ -30,22 +30,25 @@ const playRound = (name) => {
     console.log('Correct!');
     return true;
   }
-  console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'. 
-Let's try again, ${name}!`);
+  console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
   return false;
 };
 
+const getTask = () => console.log('What is the result of the expression?');
+
+const roundCount = 3;
 const main = () => {
   console.log('Welcome to the Brain Games!');
-  console.log('What is the result of the expression?');
+  getTask();
   const name = getName();
-  let rightAnswerCount = 0;
-  const roundCount = 3;
 
-  while (rightAnswerCount < roundCount && playRound(name)) {
-    rightAnswerCount += 1;
+  for (let rightAnswerCount = 0; rightAnswerCount < roundCount; rightAnswerCount += 1) {
+    if (!playRound()) {
+      console.log(`Let's try again, ${name}!`);
+      return;
+    }
   }
-  if (rightAnswerCount === roundCount) { console.log(`Congratulations, ${name}!`); }
+  console.log(`Congratulations, ${name}!`);
 };
 
 export default main;

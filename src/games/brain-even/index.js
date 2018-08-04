@@ -6,14 +6,14 @@ const getName = () => {
   return name;
 };
 
-const getRandomNumber = () => Math.floor(Math.random() * 100);
+const getRandomNumber = n => Math.floor(Math.random() * n);
 
 const isEven = number => (number % 2 === 0);
 
 const getRightAnswer = number => (isEven(number) ? 'yes' : 'no');
 
 const playRound = () => {
-  const question = getRandomNumber();
+  const question = getRandomNumber(100);
 
   console.log(`Question: ${question}`);
   const answer = readlineSync.question('Your answer: ');
@@ -28,20 +28,21 @@ const playRound = () => {
   return false;
 };
 
+const getTask = () => console.log('Answer "yes" if number even otherwise answer "no".');
+
 const roundCount = 3;
 const main = () => {
   console.log('Welcome to the Brain Games!');
-  console.log('Answer "yes" if number even otherwise answer "no".');
+  getTask();
   const name = getName();
-  let rightAnswerCount = 0;
 
-  for (rightAnswerCount = 0; rightAnswerCount < roundCount; rightAnswerCount += 1) {
+  for (let rightAnswerCount = 0; rightAnswerCount < roundCount; rightAnswerCount += 1) {
     if (!playRound()) {
       console.log(`Let's try again, ${name}!`);
-      break;
+      return;
     }
   }
-  if (rightAnswerCount === roundCount) { console.log(`Congratulations, ${name}!`); }
+  console.log(`Congratulations, ${name}!`);
 };
 
 export default main;
