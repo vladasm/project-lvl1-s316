@@ -1,18 +1,19 @@
-import readlineSync from 'readline-sync';
-import { getRandomNumber, checkRightAnswer } from '..';
+import { getRandomNumber, checkAnswer, main } from '..';
 
 const isEven = number => (number % 2 === 0);
 
 const getRightAnswer = number => (isEven(number) ? 'yes' : 'no');
 
 export const playRound = () => {
-  const question = getRandomNumber(100);
+	const number = getRandomNumber(100)
+  const question = `Question: ${number}`;
 
-  console.log(`Question: ${question}`);
-  const answer = readlineSync.question('Your answer: ');
-
-  const rightAnswer = getRightAnswer(question);
-  return checkRightAnswer(answer, rightAnswer);
+  const rightAnswer = getRightAnswer(number);
+  return checkAnswer(question, rightAnswer);
 };
 
 export const displayTask = () => console.log('Answer "yes" if number even otherwise answer "no".');
+
+const startGame = () => main(displayTask, playRound);
+
+export default startGame;

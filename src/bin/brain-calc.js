@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-import main from '..';
+import startGame from '../games/brain-calc';
 
-import { displayTask, playRound } from '../games/brain-calc';
-
-main(displayTask, playRound);
+startGame();

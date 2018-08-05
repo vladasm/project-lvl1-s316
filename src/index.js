@@ -8,7 +8,10 @@ export const getName = () => {
 
 export const getRandomNumber = n => Math.floor(Math.random() * n);
 
-export const checkRightAnswer = (answer, rightAnswer) => {
+export const checkAnswer = (question, rightAnswer) => {
+  console.log(question);
+  const answer = readlineSync.question('Your answer: ');
+
   if (answer === rightAnswer) {
     console.log('Correct!');
     return true;
@@ -18,7 +21,7 @@ export const checkRightAnswer = (answer, rightAnswer) => {
 };
 
 const roundCount = 3;
-const main = (displayTask, playRound) => {
+export const main = (displayTask, playRound) => {
   console.log('Welcome to the Brain Games!');
   displayTask();
   const name = getName();
@@ -31,5 +34,3 @@ const main = (displayTask, playRound) => {
   }
   console.log(`Congratulations, ${name}!`);
 };
-
-export default main;

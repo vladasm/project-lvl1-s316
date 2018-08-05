@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
-import main from '..';
+import startGame from '../games/brain-gcd';
 
-import { displayTask, playRound } from '../games/brain-gcd';
+startGame();
 
-main(displayTask, playRound);
