@@ -22,8 +22,7 @@ const main = (displayTask, playRound) => {
   console.log('Welcome to the Brain Games!');
   displayTask();
   const name = getName();
-  displayTask();
-
+  
   for (let rightAnswerCount = 0; rightAnswerCount < roundCount; rightAnswerCount += 1) {
     if (!playRound()) {
       console.log(`Let's try again, ${name}!`);
