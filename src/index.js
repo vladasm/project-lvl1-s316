@@ -8,9 +8,12 @@ export const getName = () => {
 
 export const getRandomNumber = n => Math.floor(Math.random() * n);
 
-export const checkAnswer = (question, rightAnswer) => {
-  console.log(question);
+const playRound = (generateData, getQuestion, getRightAnswer) => {
+  const questionData = generateData();
+
+  console.log(questionData(getQuestion));
   const answer = readlineSync.question('Your answer: ');
+  const rightAnswer = questionData(getRightAnswer);
 
   if (answer === rightAnswer) {
     console.log('Correct!');
@@ -21,13 +24,13 @@ export const checkAnswer = (question, rightAnswer) => {
 };
 
 const roundCount = 3;
-export const main = (displayTask, playRound) => {
+export const main = (displayTask, generateData, getQuestion, getRightAnswer) => {
   console.log('Welcome to the Brain Games!');
   displayTask();
   const name = getName();
 
   for (let rightAnswerCount = 0; rightAnswerCount < roundCount; rightAnswerCount += 1) {
-    if (!playRound()) {
+    if (!playRound(generateData, getQuestion, getRightAnswer)) {
       console.log(`Let's try again, ${name}!`);
       return;
     }

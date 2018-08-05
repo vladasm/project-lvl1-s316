@@ -1,19 +1,19 @@
-import { getRandomNumber, checkAnswer, main } from '..';
+import { getRandomNumber, main } from '..';
 
 const isEven = number => (number % 2 === 0);
 
 const getRightAnswer = number => (isEven(number) ? 'yes' : 'no');
 
-export const playRound = () => {
-	const number = getRandomNumber(100)
-  const question = `Question: ${number}`;
+const getQuestion = number => `Question: ${number}`;
 
-  const rightAnswer = getRightAnswer(number);
-  return checkAnswer(question, rightAnswer);
+const generateData = () => {
+  const number = getRandomNumber(100);
+
+  return fn => fn(number);
 };
 
 export const displayTask = () => console.log('Answer "yes" if number even otherwise answer "no".');
 
-const startGame = () => main(displayTask, playRound);
+const startGame = () => main(displayTask, generateData, getQuestion, getRightAnswer);
 
 export default startGame;

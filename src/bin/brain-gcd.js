@@ -3,4 +3,3 @@
 import startGame from '../games/brain-gcd';
 
 startGame();
-
