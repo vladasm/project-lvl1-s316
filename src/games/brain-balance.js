@@ -31,7 +31,7 @@ const generateData = () => {
   return fn => fn(number);
 };
 
-const displayTask = () => console.log('Balance the given number.');
+const displayTask = () => 'Balance the given number.';
 
 const startGame = () => main(displayTask, generateData, getQuestion, getRightAnswer);
 

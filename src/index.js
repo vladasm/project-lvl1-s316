@@ -26,7 +26,7 @@ const playRound = (generateData, getQuestion, getRightAnswer) => {
 const roundCount = 3;
 export const main = (displayTask, generateData, getQuestion, getRightAnswer) => {
   console.log('Welcome to the Brain Games!');
-  displayTask();
+  console.log(displayTask());
   const name = getName();
 
   for (let rightAnswerCount = 0; rightAnswerCount < roundCount; rightAnswerCount += 1) {

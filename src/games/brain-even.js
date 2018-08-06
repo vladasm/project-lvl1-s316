@@ -12,7 +12,7 @@ const generateData = () => {
   return fn => fn(number);
 };
 
-export const displayTask = () => console.log('Answer "yes" if number even otherwise answer "no".');
+export const displayTask = () => 'Answer "yes" if number even otherwise answer "no".';
 
 const startGame = () => main(displayTask, generateData, getQuestion, getRightAnswer);
 

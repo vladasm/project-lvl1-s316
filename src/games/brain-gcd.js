@@ -18,7 +18,7 @@ const generateData = () => {
   return fn => fn(number1, number2);
 };
 
-const displayTask = () => console.log('Find the greatest common divisor of given numbers.');
+const displayTask = () => 'Find the greatest common divisor of given numbers.';
 
 const startGame = () => main(displayTask, generateData, getQuestion, getRightAnswer);
 

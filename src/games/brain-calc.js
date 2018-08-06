@@ -18,7 +18,7 @@ const generateData = () => {
   return fn => fn(number1, number2, operation);
 };
 
-const displayTask = () => console.log('What is the result of the expression?');
+const displayTask = () => 'What is the result of the expression?';
 
 const startGame = () => main(displayTask, generateData, getQuestion, getRightAnswer);
 
